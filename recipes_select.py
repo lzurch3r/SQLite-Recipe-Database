@@ -8,7 +8,7 @@ for row in cursor:
     print("ID = ", row[0])
     print("TITLE = ", row[1])
     print("CUISINE = ", row[2])
-    print("TYPE = ", row[3])
+    print("PREP TIME = ", row[3])
 
 print("Operation done successfully")
 conn.close()
