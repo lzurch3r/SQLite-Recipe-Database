@@ -8,7 +8,7 @@ update_recipes = "UPDATE RECIPES SET\
     prep_time = '2000',\
     cook_time = '20',\
     servings = 1\
-    WHERE recipe_id = 5"
+    WHERE recipe_id = 1"
 
 try:
     with sqlite3.connect(database) as conn:

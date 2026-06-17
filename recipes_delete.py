@@ -1,7 +1,7 @@
 import sqlite3
 
 database = 'database/recipes.db'
-delete_recipes = "DELETE from RECIPES WHERE recipe_id = 7"
+delete_recipes = "DELETE from RECIPES WHERE recipe_id = 1"
 
 try:
     with sqlite3.connect(database) as conn:
