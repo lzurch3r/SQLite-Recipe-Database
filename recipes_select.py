@@ -3,8 +3,6 @@ import sqlite3
 database = 'database/recipes.db'
 select_recipes = "SELECT * from RECIPES"
 select_ingredients = "SELECT * from INGREDIENTS"
-#recipe_id = 0
-#select_instructions = "SELECT * from INSTRUCTIONS WHERE recipe_id=?", (recipe_id,)
 
 try:
     with sqlite3.connect(database) as conn:
@@ -30,11 +28,13 @@ try:
             count_query = cursor_instructions.execute("SELECT Count() from INSTRUCTIONS WHERE recipe_id=?", (recipe_id,))
             row_count = count_query.fetchone()[0]
             # If there are no steps, skip the process of querying more data
+            # Otherwise, query the instruction steps and display them all
             if (row_count > 0):
+                print("\n   Instructions:")
                 ins_rows = cursor_instructions.execute("SELECT * from INSTRUCTIONS WHERE recipe_id=?", (recipe_id,))
                 for ins_row in ins_rows:
-                    print("  Step", ins_row[0])
-                    print("    ", ins_row[1])
+                    print("      Step", ins_row[0])
+                    print("        ", ins_row[1])
             print("")
 
 except sqlite3.OperationalError as e:
