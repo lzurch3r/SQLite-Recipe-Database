@@ -27,16 +27,19 @@ create_table = [
         FOREIGN KEY (recipe_id) REFERENCES RECIPES (recipe_id)
     );'''
 ]
+def createTable():
+    try:
+        with sqlite3.connect(database) as conn:
+            cursor = conn.cursor()
 
-try:
-    with sqlite3.connect(database) as conn:
-        cursor = conn.cursor()
+            for statement in create_table:
+                cursor.execute(statement)
 
-        for statement in create_table:
-            cursor.execute(statement)
+            conn.commit()
 
-        conn.commit()
+            print("Tables created successfully")
+    except sqlite3.OperationalError as e:
+        print("Failed to create table:", e)
 
-        print("Tables created successfully")
-except sqlite3.OperationalError as e:
-    print("Failed to create table:", e)
+if __name__ == "__main__":
+    createTable()

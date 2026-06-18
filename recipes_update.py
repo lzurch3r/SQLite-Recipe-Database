@@ -10,10 +10,11 @@ update_recipes = "UPDATE RECIPES SET\
     servings = 1\
     WHERE recipe_id = 1"
 
-try:
-    with sqlite3.connect(database) as conn:
-        cur = conn.cursor()
-        cur.execute(update_recipes)
-        conn.commit()
-except sqlite3.OperationalError as e:
-    print(e)
+def updateRecipes():
+    try:
+        with sqlite3.connect(database) as conn:
+            cur = conn.cursor()
+            cur.execute(update_recipes)
+            conn.commit()
+    except sqlite3.OperationalError as e:
+        print(e)
