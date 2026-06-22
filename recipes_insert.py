@@ -12,17 +12,6 @@ def insertRecipes(dataArray):
             cur.execute(rowsQuery)
             recipe_id = cur.fetchone()[0] + 1
 
-            # insert_recipes = "INSERT INTO RECIPES ( \
-            #         recipe_id, title, cuisine, tag,\
-            #         prep_time, cook_time, servings\
-            #         )\
-            #     VALUES (%s, %s, %s, %s, %s, %s, %s)" % (recipe_id,
-            #                                             DATA[0],
-            #                                             DATA[1],
-            #                                             DATA[2],
-            #                                             DATA[3],
-            #                                             DATA[4],
-            #                                             DATA[5])
             conn.execute("INSERT INTO RECIPES (recipe_id, title, cuisine, tag, prep_time, cook_time, servings)\
                 VALUES (?, ?, ?, ?, ?, ?, ?)" , (recipe_id,DATA[0],DATA[1],DATA[2],DATA[3],DATA[4],DATA[5]))
 

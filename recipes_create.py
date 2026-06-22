@@ -13,7 +13,7 @@ create_table = [
     );''',
 
     '''CREATE TABLE IF NOT EXISTS INGREDIENTS (
-        ingredient_id INT PRIMARY KEY NOT NULL,
+        ingredient_id INT NOT NULL,
         amount INT NOT NULL,
         ingredient TEXT NOT NULL,
         recipe_id INT NOT NULL,
@@ -21,7 +21,7 @@ create_table = [
     );''',
 
     '''CREATE TABLE IF NOT EXISTS INSTRUCTIONS (
-        step_id INT PRIMARY KEY NOT NULL,
+        step_id INT NOT NULL,
         step TEXT NOT NULL,
         recipe_id INT NOT NULL,
         FOREIGN KEY (recipe_id) REFERENCES RECIPES (recipe_id)
