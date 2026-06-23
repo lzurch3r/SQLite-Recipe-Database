@@ -69,7 +69,7 @@ def main():
                 while (delete_loop):
                     delete_id = deleteRecipe()
                     if not delete_id == 0:
-                        RDelete.deleteRecipes()
+                        RDelete.deleteRecipes(delete_id)
 
                         ## Ask if user will delete more data and loop if yes; otherwise, exit loop
                         delete_loop = loopQuery("Delete another recipe (Y/N)? ")
@@ -123,8 +123,9 @@ def deleteRecipe():
         return 0
     ask_user_id = int(getUserInput("int", "Pick a recipe to delete (RECIPE ID): "))
 
+    print(ask_user_id)
     while (ask_user_id <= 0 or ask_user_id > recipe_count):
-        ask_user_id = getUserInput("int", f"Please enter a number within range (from 1 to {recipe_count})")
+        ask_user_id = int(getUserInput("int", f"Please enter a number within range (from 1 to {recipe_count})"))
     
     return ask_user_id
 
@@ -144,8 +145,6 @@ def getDisplay():
             if ask_user.upper() != "ALL":
                 ask_user = getUserInput("str", f"Please enter \"All\" or a number within range (from 1 to {recipe_count})")
             else: return ask_user.upper()
-
-    
 
 def loopQuery(queryString):
     ask_user = getUserInput("str", queryString)
